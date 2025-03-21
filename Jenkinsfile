@@ -12,16 +12,16 @@ pipeline {
             }
         }
         
-        stage('Terraform Apply') {
-            steps {
-                script {
-                    dir('/var/lib/jenkins/workspace/') {
-                    sh 'pwd'
-                    sh 'terraform init'
-                    sh 'terraform validate'
-                    // sh 'terraform destroy -auto-approve'
-                    sh 'terraform plan'
-                    sh 'terraform apply -auto-approve'
+        #!/bin/bash
+
+read -p "Do you want to trigger the script? (yes/no): " choice
+
+if [[ "$choice" == "yes" ]]; then
+    echo "Manual trigger is working!"
+else
+    echo "Trigger canceled."
+fi
+
                     }
                 }
             }
